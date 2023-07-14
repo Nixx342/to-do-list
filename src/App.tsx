@@ -1,18 +1,41 @@
 import { useState } from 'react'
 import './App.css'
-import Task from './Components/Task'
+import Task, { TaskProps } from './Components/Task'
+import TaskList from './Components/TaksList'
+
 
 function App() {
-  const [taskList, setTaskList] = useState([])
-
+  const [tasks, setTasks
+  ] = useState([
+    {
+      name: 'Name 1',
+      description: 'Desc 1',
+      priority: 1,
+      complete: false
+    },
+    {
+      name: 'Name 2',
+      description: 'Desc 2',
+      priority: 2,
+      complete: true
+    },
+    {
+      name: 'Name 3',
+      description: 'Desc 3',
+      priority: 3,
+      complete: true
+    },
+  ])
+  
   return (
     <div style={{background: 'lightGray', width: '60vw'}}>
       <div>
         <input placeholder='Введите название задачи'></input>
         <input placeholder='Введите описание задачи'></input>
-        <button>+1</button>
+        <button onClick={()=>{setTasks(tasks.splice(3))}}
+        >+1</button>
       </div>
-      {taskList.length === 0 ? <span style={{color: 'green'}}>Активных задач нет!!!</span> : <span>Есть {taskList.length} активных задач</span>}
+      {tasks.length === 0 ? <span style={{color: 'green'}}>Активных задач нет!!!</span> : <TaskList taskList={tasks}/>}
       
     </div>
   )
