@@ -61,8 +61,6 @@ function App() {
       newTasks.push(task)
       setTasks(newTasks)
       setMessage('Задача добавлена')
-      // document.getElementById('inputName').value = ''
-      // document.getElementById('inputDescription').value = ''
     } else {
       setMessage('Заполните все поля')
     }
@@ -84,7 +82,6 @@ function App() {
             newTask.name = e.target.value
           }}
           placeholder='Введите название задачи'
-          // value={newTask.name}
         ></input>
 
         <input
@@ -98,7 +95,6 @@ function App() {
         <input
           id='inputPriority'
           type='number'
-          // onReset={}
           min='0'
           max='10'
           placeholder='Введите приоритет задачи'
