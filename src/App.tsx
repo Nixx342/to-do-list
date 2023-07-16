@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { TaskProps } from './Components/Task'
+import Task, { TaskProps } from './Components/Task'
 import TaskList from './Components/TaksList'
 import './App.css'
 
@@ -38,17 +38,25 @@ function App() {
   ])
   const [message, setMessage] = useState('')
 
+  const handleDeleteTask = (index: number) => {
+    const newTasks = [...tasks]
+    newTasks.splice(index, 1)
+    setTasks(newTasks)
+  }
+  
+  const handleCompleteTask = (index: number) => {
+    const newTasks = [...tasks]
+    newTasks[index].complete = !newTasks[index].complete 
+    setTasks(newTasks)
+  }
+
   let newTask: TaskProps = {
     name: '',
     description: '',
     priority: 0,
     complete: false,
-  }
-
-  const handleDeleteTask = (index: number) => {
-    const newTasks = [...tasks]
-    newTasks.splice(index, 1)
-    setTasks(newTasks)
+    onDeleteTask: handleDeleteTask,
+    onCompleteTask: handleCompleteTask
   }
   const handleAddTask = (task: TaskProps) => {
     if (
@@ -75,6 +83,7 @@ function App() {
         padding: '3%',
       }}
     >
+      
       <div>
         <input
           id='inputName'
@@ -122,8 +131,21 @@ function App() {
       {tasks.length === 0 ? (
         <span style={{ color: 'green' }}>Активных задач нет!!!</span>
       ) : (
+        tasks.map((task,index)=>{
+          let i = index
+          return(
+            <Task
+              onCompleteTask={handleCompleteTask.bind(i)}
+              onDeleteTask={handleDeleteTask.bind(i)}
+              name={task.name}
+              description={task.description}
+              priority={task.priority}
+              complete={task.complete}
+            />
+          )
+        })
         // <TaskList taskList={tasks} onDeleteTask={handleDeleteTask} />
-        <TaskList taskList={tasks} />
+        // <TaskList taskList={tasks} onDeleteTask={handleDeleteTask} />
       )}
     </div>
   )

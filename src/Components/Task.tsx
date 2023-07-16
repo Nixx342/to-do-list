@@ -3,6 +3,8 @@ export interface TaskProps {
   description: string
   priority: number
   complete: boolean
+  onCompleteTask: any
+  onDeleteTask: any
 }
 
 const taskStyle = {
@@ -35,8 +37,9 @@ const Task = (props: TaskProps) => {
         <span>Приоритет задачи: {props.priority}</span>
         <p>{props.description}</p>
       </div>
-      <button style={buttonStyle} className='ready'></button>
-      <button style={buttonStyle} className='delete'></button>
+      <button style={buttonStyle} className='complite'>Complite</button>
+      {/* <button style={buttonStyle} onClick={props.onDeleteTask(props.index)} className='delete'></button> */}
+      <button style={buttonStyle} onClick={props.onDeleteTask} className='delete'>Delete</button>
     </div>
   )
 }

@@ -2,7 +2,7 @@ import Task, { TaskProps } from './Task'
 
 export interface TaskListProps {
   taskList: Array<TaskProps>
-  //   onDeleteTask: Function
+    onDeleteTask: Function
   //   onCompleteTask: Function
 }
 
@@ -14,9 +14,11 @@ export interface TaskListProps {
 const TaskList = (props: TaskListProps) => {
   return (
     <div>
-      {props.taskList.map(task => {
+      {props.taskList.map((task, index) => {
         return (
           <Task
+            index={index}
+            onDeleteTask={props.onDeleteTask}
             name={task.name}
             description={task.description}
             priority={task.priority}
