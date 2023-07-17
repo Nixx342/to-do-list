@@ -3,60 +3,38 @@ import Task, { TaskProps } from './Components/Task'
 import './App.css'
 
 function App() {
-
   const [message, setMessage] = useState('')
+  const [name, setName] = useState('')
+  const [description, setDescription] = useState('')
+  const [priority, setPriority] = useState(0)
 
   const [tasks, setTasks] = useState([
-    {
-      name: 'Задача 1',
-      description: 'Описание задачи 1',
-      priority: 3,
-      complete: false,
-    },
-    {
-      name: 'Задача 2',
-      description: 'Описание задачи 2',
-      priority: 2,
-      complete: true,
-    },
-    {
-      name: 'Задача 3',
-      description: 'Описание задачи 3',
-      priority: 1,
-      complete: false,
-    },
-    {
-      name: 'Задача 4',
-      description: 'Описание задачи 4',
-      priority: 2,
-      complete: true,
-    },
-    {
-      name: 'Задача 5',
-      description: 'Описание задачи 5',
-      priority: 3,
-      complete: false,
-    },
+    // {
+    //   name: 'Задача 1',
+    //   description: 'Описание задачи 1',
+    //   priority: 3,
+    //   complete: false,
+    // },
   ])
 
-  const handleDeleteTask = (index: number) : void => {
+  const handleDeleteTask = (index: number): void => {
     let newTasks = [...tasks]
     newTasks.splice(index, 1)
     setTasks(newTasks)
   }
-  const handleCompleteTask = (index: number) => {
-    const newTasks = [...tasks]
-    newTasks[index].complete = !newTasks[index].complete 
+  const handleCompleteTask = (index: number): void => {
+    const newTasks: Array<TaskProps> = [...tasks]
+    newTasks[index].complete = !newTasks[index].complete
     setTasks(newTasks)
   }
 
   let newTask: TaskProps = {
-    name: '',
-    description: '',
-    priority: 0,
+    name: name,
+    description: description,
+    priority: priority,
     complete: false,
     onDeleteTask: handleDeleteTask,
-    onCompleteTask: handleCompleteTask
+    onCompleteTask: handleCompleteTask,
   }
 
   const handleAddTask = (task: TaskProps) => {
@@ -66,44 +44,53 @@ function App() {
       task.priority >= 0 &&
       task.priority <= 10
     ) {
-      const newTasks = [...tasks]
-      newTasks.push(task)
-      setTasks(newTasks)
+      const newTaskList = [
+        ...tasks,
+        {
+          name: name,
+          description: description,
+          priority: priority,
+          complete: false,
+        },
+      ]
+      // newTasks.push(task)
+      setTasks(newTaskList)
+      setName('')
+      setDescription('')
+      setPriority(0)
       setMessage('Задача добавлена')
+      setTimeout(() => {
+        setMessage('')
+      }, 5000)
     } else {
       setMessage('Заполните все поля')
+      setTimeout(() => {
+        setMessage('')
+      }, 5000)
     }
   }
 
   return (
-    <div
-      style={{
-        background: 'lightGray',
-        width: '60vw',
-        color: 'black',
-        padding: '3%',
-      }}
-    >
-      
+    <div className='main-container'>
       <div>
         <input
-          id='inputName'
+          value={name}
           onChange={e => {
-            newTask.name = e.target.value
+            setName(e.target.value)
           }}
           placeholder='Введите название задачи'
         ></input>
 
         <input
-          id='inputDescription'
+          value={description}
           onChange={e => {
-            newTask.description = e.target.value
+            setDescription(e.target.value)
           }}
           placeholder='Введите описание задачи'
         ></input>
 
         <input
-          id='inputPriority'
+          value={priority}
           type='number'
           min='0'
           max='10'
@@ -114,7 +101,7 @@ function App() {
             } else if (Number(e.target.value) > 10) {
               e.target.value = '10'
             }
-            newTask.priority = Number(e.target.value)
+            setPriority(Number(e.target.value))
           }}
         ></input>
 
@@ -127,14 +114,13 @@ function App() {
         </button>
       </div>
 
-      <span>{message}</span>
+      <p>{message}</p>
 
-      {
-      tasks.length === 0 ? (
-        <span style={{ color: 'green' }}>Активных задач нет!!!</span>
+      {tasks.length === 0 ? (
+        <p style={{ color: 'green' }}>Активных задач нет!!!</p>
       ) : (
-        tasks.map((task,index)=>{
-          return(
+        tasks.map((task: TaskProps, index: number) => {
+          return (
             <Task
               key={index}
               onCompleteTask={() => handleCompleteTask(index)}

@@ -4,3 +4,10 @@
   padding: 2rem;
   text-align: center;
 }
+
+.main-container {
+  background: lightGray;
+  width: 60vw;
+  color: black;
+  padding: 3%;
+}
