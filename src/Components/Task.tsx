@@ -1,3 +1,5 @@
+import '../Components/Task.css'
+
 export interface TaskProps {
   name: string
   description: string
@@ -7,22 +9,6 @@ export interface TaskProps {
   onDeleteTask: any
 }
 
-const taskStyle = {
-  width: '80%',
-  border: '1px solid black',
-  display: 'flex',
-  margin: '2% auto',
-  justifyContent: 'center',
-  alignItems: 'center',
-  paddingBottom: '2%',
-}
-
-const textStyle = {
-  width: '70%',
-  //   margin: 'auto',
-  // marginBottom: '2%',
-}
-
 const buttonStyle = {
   height: '4vh',
   width: '3vw',
@@ -30,15 +16,23 @@ const buttonStyle = {
 }
 
 const Task = (props: TaskProps) => {
+  let name, task
+  if(props.complete){
+    task = 'taskCompleted'
+    name = 'taskNameCompleted'
+  } else {
+    task = 'task'
+    name = 'taskName'
+  }
+  
   return (
-    <div style={taskStyle} className='task'>
-      <div style={textStyle}>
-        <h3>{props.name}</h3>
+    <div className={task}>
+      <div >
+        <h3 className={name}>{props.name}</h3>
         <span>Приоритет задачи: {props.priority}</span>
         <p>{props.description}</p>
       </div>
-      <button style={buttonStyle} className='complite'>Complite</button>
-      {/* <button style={buttonStyle} onClick={props.onDeleteTask(props.index)} className='delete'></button> */}
+      <button style={buttonStyle} onClick={props.onCompleteTask} className='complite'>Complite</button>
       <button style={buttonStyle} onClick={props.onDeleteTask} className='delete'>Delete</button>
     </div>
   )
