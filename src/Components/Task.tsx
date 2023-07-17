@@ -9,12 +9,6 @@ export interface TaskProps {
   onDeleteTask: any
 }
 
-const buttonStyle = {
-  height: '4vh',
-  width: '3vw',
-  margin: '5px',
-}
-
 const Task = (props: TaskProps) => {
   let name, task
   if(props.complete){
@@ -24,7 +18,7 @@ const Task = (props: TaskProps) => {
     task = 'task'
     name = 'taskName'
   }
-  
+
   return (
     <div className={task}>
       <div >
@@ -32,8 +26,8 @@ const Task = (props: TaskProps) => {
         <span>Приоритет задачи: {props.priority}</span>
         <p>{props.description}</p>
       </div>
-      <button style={buttonStyle} onClick={props.onCompleteTask} className='complite'>Complite</button>
-      <button style={buttonStyle} onClick={props.onDeleteTask} className='delete'>Delete</button>
+      <button onClick={props.onCompleteTask} className='completed btn'>+</button>
+      <button onClick={props.onDeleteTask} className='delete btn'>X</button>
     </div>
   )
 }
