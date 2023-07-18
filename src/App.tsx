@@ -92,13 +92,14 @@ function App() {
           complete: false,
         },
       ]
-      // newTasks.push(task)
+
       setTasks(newTaskList)
       setName('')
       setDescription('')
       setPriority(0)
       setMessage('Задача добавлена')
       setMessageType('complete')
+
       setTimeout(() => {
         setMessage('')
         setMessageType('noMessage')
@@ -168,7 +169,6 @@ function App() {
       </div>
 
       {tasks.length === 0 ? (
-        // setMessage('Активных задач нет')
         <p className='noTasks'>Активных задач нет!!!</p>
       ) : (
         tasks

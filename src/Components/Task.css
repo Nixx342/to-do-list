@@ -54,21 +54,12 @@
   margin: 5px;
 }
 
-/* .delete {
-  background-color: firebrick;
-} */
-
 .delete:hover {
   filter: drop-shadow(0 0 5px rgb(0, 0, 0));
   cursor: pointer;
 }
 
-/* .completed {
-  background-color: orange;
-} */
-
 .completed:hover {
-  /* background-color: rgb(163, 143, 42); */
   filter: drop-shadow(0 0 5px rgb(0, 0, 0));
   cursor: pointer;
 }

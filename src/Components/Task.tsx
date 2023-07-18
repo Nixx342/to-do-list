@@ -1,7 +1,4 @@
 import '../Components/Task.css'
-// import { FaCheck } from 'react-icons/fa'
-import { GrReturn, GrCheckmark } from 'react-icons/gr'
-
 import { BiRefresh, BiTrashAlt, BiCheck } from 'react-icons/bi'
 
 export interface TaskProps {
@@ -26,7 +23,6 @@ const Task = (props: TaskProps) => {
   return (
     <div className={task}>
       <div className='text'>
-        {/* <p><h3 className={name}>{props.name} </h3> Приоритет задачи: {props.priority}</p> */}
         <div className='topBlock'>
           <span className={name}>{props.name} </span>
           <span className='priority'>Приоритет задачи: {props.priority}</span>
@@ -49,23 +45,10 @@ const Task = (props: TaskProps) => {
               size={30}
               className='delete'
             />
-            {/* <button onClick={props.onCompleteTask} className='completed btn'>
-              +
-            </button> */}
-            {/* <button onClick={props.onDeleteTask} className='delete btn'>
-              X
-            </button> */}
           </div>
         </div>
         <p className='description'>{props.description}</p>
       </div>
-      {/* <button onClick={props.onCompleteTask} className='completed btn'>
-        +
-      </button>
-      <button onClick={props.onDeleteTask} className='delete btn'>
-        X
-      </button> */}
-      {/* Добавить кнопку редактирования задачи*/}
     </div>
   )
 }
