@@ -1,67 +1,85 @@
 .taskCompleted {
-    border: 1px solid black;
-    display: flex;
-    margin: 2% auto;
-    justify-content: center;
-    align-items: center;
-    padding-bottom: 2%;
-    background: rgb(88, 96, 88);
-    padding: 3%;
+  border: 1px solid black;
+  display: flex;
+  margin: 2% auto;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 2%;
+  background: rgb(148, 167, 148);
+  padding: 3%;
 }
 
 .task {
-    border: 1px solid black;
-    display: flex;
-    margin: 2% auto;
-    justify-content: center;
-    align-items: center;
-    padding-bottom: 2%;
-    background: #fff;
-    padding: 3%;
+  border: 1px solid black;
+  display: flex;
+  margin: 2% auto;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 2%;
+  background: #fff;
+  padding: 3%;
 }
 
 .taskNameCompleted {
-    text-decoration: line-through;
-    font-size: 20px;
+  text-decoration: line-through;
+  font-size: 20px;
+  width: 50%;
+  font-weight: 900;
 }
 
 .taskName {
-    text-decoration: none;
-    font-size: 20px;
+  text-decoration: none;
+  font-size: 20px;
+  width: 50%;
+  font-weight: 900;
 }
 
 .priority {
-
+  width: 25%;
+  font-weight: 600;
 }
 
+.buttons {
+  width: 15%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.description {
+  text-align: justify;
+}
 .btn {
-    height: 30px;
-    width: 30px;
-    margin: 5px;
+  height: 30px;
+  width: 30px;
+  margin: 5px;
 }
 
-.delete {
-    background-color: firebrick;
-}
+/* .delete {
+  background-color: firebrick;
+} */
 
 .delete:hover {
-    background-color: tomato;
+  filter: drop-shadow(0 0 5px rgb(0, 0, 0));
+  cursor: pointer;
 }
 
-.completed{
-    background-color: orange;
-}
+/* .completed {
+  background-color: orange;
+} */
 
 .completed:hover {
-    background-color: rgb(163, 143, 42);
+  /* background-color: rgb(163, 143, 42); */
+  filter: drop-shadow(0 0 5px rgb(0, 0, 0));
+  cursor: pointer;
 }
 
 .text {
-    width: 80%;
+  width: 80%;
 }
 
-.nameAndPriority {
-    display: flex;
-    justify-content: space-around;
-    text-align: start;
+.topBlock {
+  display: flex;
+  justify-content: space-between;
+  text-align: start;
+  border-bottom: 2px solid rgb(66, 65, 65);
 }

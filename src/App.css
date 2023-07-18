@@ -1,5 +1,5 @@
 #root {
-  max-width: 1280px;
+  max-width: 1480px;
   margin: 0 auto;
   padding: 2rem;
   display: flex;
@@ -9,7 +9,8 @@
 
 .main-container {
   background: lightGray;
-  width: 60vw;
+  /* width: 90vw; */
+  width: 90%;
   color: black;
   padding: 3%;
   align-items: center;
@@ -19,18 +20,17 @@
 .noTasks {
   background-color: darkolivegreen;
   display: table-cell;
-  vertical-align: middle ;
+  vertical-align: middle;
   justify-content: center;
   text-align: center;
   height: 7vh;
   width: 60vw;
-  
 }
 
 .complete {
   background-color: darkolivegreen;
   display: table-cell;
-  vertical-align: middle ;
+  vertical-align: middle;
   justify-content: center;
   text-align: center;
   height: 7vh;
@@ -40,17 +40,16 @@
 .error {
   background-color: rgb(187, 68, 13);
   display: table-cell;
-  vertical-align: middle ;
+  vertical-align: middle;
   justify-content: center;
   text-align: center;
   height: 7vh;
   width: 100%;
   margin: 0;
-  /* border-radius: 0 0 10px 10px; */
 }
 
 .addTask {
-  /* height: 20vh; */
+  background: rgb(148, 167, 148);
   border: 1px solid black;
   border-radius: 10px 10px 0 0;
   display: flex;
@@ -58,6 +57,10 @@
   justify-content: space-between;
   padding: 2%;
   margin: 5px;
+}
+
+.addPriority {
+  font-weight: 700;
 }
 
 .addTaskInputElements {
@@ -78,6 +81,7 @@
   border-radius: 0.25rem;
   color: rgb(33, 29, 29);
   text-align: center;
+  font-size: 16px;
 }
 .nameInput::placeholder {
   color: #212529;
@@ -95,8 +99,8 @@
 .descriptionInput {
   resize: none;
   border: 1px solid #999;
-  outline: none ;
-  height:20vh;
+  outline: none;
+  height: 20vh;
   margin-top: 2%;
   background-color: #fff;
   border: 1px solid #bdbdbd;
@@ -104,6 +108,7 @@
   color: rgb(33, 29, 29);
   text-align: center;
   border-radius: 0;
+  font-size: 15px;
 }
 .descriptionInput::placeholder {
   color: #212529;

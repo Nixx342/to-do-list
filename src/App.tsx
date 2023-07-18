@@ -8,28 +8,54 @@ function App() {
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
   const [priority, setPriority] = useState(0)
-
   const [tasks, setTasks] = useState([
     {
-      name: 'Задача 1',
-      description: 'Описание задачи 1',
+      name: 'Купить продукты',
+      description: 'Купить все необходимые продукты для приготовления ужина',
       priority: 3,
       complete: false,
     },
     {
-      name: 'Задача 2',
-      description: 'Описание задачи 2',
-      priority: 1,
-      complete: true,
-    },
-    {
-      name: 'Задача 3',
-      description: 'Описание задачи 3',
+      name: 'Починить кран',
+      description: 'Отремонтировать кран на кухне, который течет',
       priority: 8,
       complete: false,
     },
+    {
+      name: 'Записаться в спортзал',
+      description: 'Записаться в спортзал на ближайшую неделю',
+      priority: 9,
+      complete: false,
+    },
+    {
+      name: 'Почитать книгу',
+      description: 'Прочитать 100 страниц книги по истории',
+      priority: 1,
+      complete: false,
+    },
+    {
+      name: 'Позвонить другу',
+      description: 'Позвонить другу, которого давно не видел',
+      priority: 1,
+      complete: false,
+    },
+    {
+      name: 'Посетить музей',
+      description: 'Посетить музей изобразительных искусств в выходной день',
+      priority: 6,
+      complete: true,
+    },
+    {
+      name: 'Записаться на курсы',
+      description:
+        'Записаться на курсы английского языка на ближайшие два месяца',
+      priority: 5,
+      complete: true,
+    },
   ])
-  tasks.sort((a,b) => b.priority - a.priority)
+
+  tasks.sort((a, b) => b.priority - a.priority)
+
   const handleDeleteTask = (index: number): void => {
     let newTasks = [...tasks]
     newTasks.splice(index, 1)
@@ -77,7 +103,6 @@ function App() {
         setMessage('')
         setMessageType('noMessage')
       }, 5000)
-      
     } else {
       setMessage('Заполните все поля')
       setMessageType('error')
@@ -85,7 +110,6 @@ function App() {
         setMessage('')
         setMessageType('noMessage')
       }, 5000)
-      
     }
   }
 
@@ -93,9 +117,10 @@ function App() {
     <div className='main-container'>
       <div className='addTask'>
         <div className='addTaskInputElements'>
-          <div className='topLineElements'> 
+          <div className='topLineElements'>
             <input
               className='nameInput'
+              maxLength={100}
               value={name}
               onChange={e => {
                 setName(e.target.value)
@@ -103,7 +128,7 @@ function App() {
               placeholder='Введите название задачи'
             ></input>
             <div>
-              <span>Приоритет: </span>
+              <span className='addPriority'>Приоритет: </span>
               <input
                 className='priorityInput'
                 value={priority}
@@ -137,32 +162,30 @@ function App() {
             }}
             placeholder='Введите описание задачи'
           ></textarea>
-
-          
         </div>
 
         <p className={messageType}>{message}</p>
       </div>
 
-      
-
       {tasks.length === 0 ? (
         // setMessage('Активных задач нет')
         <p className='noTasks'>Активных задач нет!!!</p>
       ) : (
-        tasks.sort((a,b) => a.complete - b.complete).map((task: TaskProps, index: number) => {
-          return (
-            <Task
-              key={index}
-              onCompleteTask={() => handleCompleteTask(index)}
-              onDeleteTask={() => handleDeleteTask(index)}
-              name={task.name}
-              description={task.description}
-              priority={task.priority}
-              complete={task.complete}
-            />
-          )
-        })
+        tasks
+          .sort((a, b) => a.complete - b.complete)
+          .map((task: TaskProps, index: number) => {
+            return (
+              <Task
+                key={index}
+                onCompleteTask={() => handleCompleteTask(index)}
+                onDeleteTask={() => handleDeleteTask(index)}
+                name={task.name}
+                description={task.description}
+                priority={task.priority}
+                complete={task.complete}
+              />
+            )
+          })
       )}
     </div>
   )
