@@ -2,7 +2,9 @@
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
+  display: flex;
   text-align: center;
+  justify-content: center;
 }
 
 .main-container {
@@ -10,4 +12,144 @@
   width: 60vw;
   color: black;
   padding: 3%;
+  align-items: center;
+  justify-content: center;
+}
+
+.noTasks {
+  background-color: darkolivegreen;
+  display: table-cell;
+  vertical-align: middle ;
+  justify-content: center;
+  text-align: center;
+  height: 7vh;
+  width: 60vw;
+  
+}
+
+.complete {
+  background-color: darkolivegreen;
+  display: table-cell;
+  vertical-align: middle ;
+  justify-content: center;
+  text-align: center;
+  height: 7vh;
+  margin: 0;
+}
+
+.error {
+  background-color: rgb(187, 68, 13);
+  display: table-cell;
+  vertical-align: middle ;
+  justify-content: center;
+  text-align: center;
+  height: 7vh;
+  width: 100%;
+  margin: 0;
+  /* border-radius: 0 0 10px 10px; */
+}
+
+.addTask {
+  /* height: 20vh; */
+  border: 1px solid black;
+  border-radius: 10px 10px 0 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2%;
+  margin: 5px;
+}
+
+.addTaskInputElements {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.topLineElements {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nameInput {
+  width: 60%;
+  background-color: #fff;
+  border: 1px solid #bdbdbd;
+  border-radius: 0.25rem;
+  color: rgb(33, 29, 29);
+  text-align: center;
+}
+.nameInput::placeholder {
+  color: #212529;
+  text-align: center;
+  opacity: 0.4;
+}
+.nameInput:focus {
+  color: #212529;
+  background-color: #fff;
+  border-color: #bdbdbd;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(158, 158, 158, 0.7);
+}
+
+.descriptionInput {
+  resize: none;
+  border: 1px solid #999;
+  outline: none ;
+  height:20vh;
+  margin-top: 2%;
+  background-color: #fff;
+  border: 1px solid #bdbdbd;
+  border-radius: 0.25rem;
+  color: rgb(33, 29, 29);
+  text-align: center;
+  border-radius: 0;
+}
+.descriptionInput::placeholder {
+  color: #212529;
+  opacity: 0.4;
+  font-size: 18px;
+  text-align: center;
+}
+.descriptionInput:focus {
+  color: #212529;
+  background-color: #fff;
+  border-color: #bdbdbd;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(158, 158, 158, 0.7);
+}
+
+.priorityInput {
+  width: 25%;
+  background-color: #fff;
+  border: 1px solid #bdbdbd;
+  border-radius: 0.25rem;
+  color: rgb(33, 29, 29);
+}
+.priorityInput::placeholder {
+  color: #212529;
+  opacity: 0.4;
+}
+.priorityInput:focus {
+  color: #212529;
+  background-color: #fff;
+  border-color: #bdbdbd;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(158, 158, 158, 0.7);
+}
+
+.btnAddTask {
+  border: 0;
+  border-radius: 5px;
+  background: #4676d7;
+  color: #fff;
+  cursor: pointer;
+}
+.btnAddTask:hover {
+  background: #1d49aa;
+}
+.btnAddTask:active {
+  outline: none;
+  background: #1a3e8c;
+  box-shadow: 0 0 0 1px #56627a;
 }

@@ -4,19 +4,32 @@ import './App.css'
 
 function App() {
   const [message, setMessage] = useState('')
+  const [messageType, setMessageType] = useState('')
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
   const [priority, setPriority] = useState(0)
 
   const [tasks, setTasks] = useState([
-    // {
-    //   name: 'Задача 1',
-    //   description: 'Описание задачи 1',
-    //   priority: 3,
-    //   complete: false,
-    // },
+    {
+      name: 'Задача 1',
+      description: 'Описание задачи 1',
+      priority: 3,
+      complete: false,
+    },
+    {
+      name: 'Задача 2',
+      description: 'Описание задачи 2',
+      priority: 1,
+      complete: true,
+    },
+    {
+      name: 'Задача 3',
+      description: 'Описание задачи 3',
+      priority: 8,
+      complete: false,
+    },
   ])
-
+  tasks.sort((a,b) => b.priority - a.priority)
   const handleDeleteTask = (index: number): void => {
     let newTasks = [...tasks]
     newTasks.splice(index, 1)
@@ -59,67 +72,85 @@ function App() {
       setDescription('')
       setPriority(0)
       setMessage('Задача добавлена')
+      setMessageType('complete')
       setTimeout(() => {
         setMessage('')
+        setMessageType('noMessage')
       }, 5000)
+      
     } else {
       setMessage('Заполните все поля')
+      setMessageType('error')
       setTimeout(() => {
         setMessage('')
+        setMessageType('noMessage')
       }, 5000)
+      
     }
   }
 
   return (
     <div className='main-container'>
-      <div>
-        <input
-          value={name}
-          onChange={e => {
-            setName(e.target.value)
-          }}
-          placeholder='Введите название задачи'
-        ></input>
+      <div className='addTask'>
+        <div className='addTaskInputElements'>
+          <div className='topLineElements'> 
+            <input
+              className='nameInput'
+              value={name}
+              onChange={e => {
+                setName(e.target.value)
+              }}
+              placeholder='Введите название задачи'
+            ></input>
+            <div>
+              <span>Приоритет: </span>
+              <input
+                className='priorityInput'
+                value={priority}
+                type='number'
+                min='0'
+                max='10'
+                onChange={e => {
+                  if (Number(e.target.value) < 0) {
+                    e.target.value = '0'
+                  } else if (Number(e.target.value) > 10) {
+                    e.target.value = '10'
+                  }
+                  setPriority(Number(e.target.value))
+                }}
+              />
+            </div>
+            <button
+              className='btnAddTask'
+              onClick={() => {
+                handleAddTask(newTask)
+              }}
+            >
+              Добавить задачу
+            </button>
+          </div>
+          <textarea
+            className='descriptionInput'
+            value={description}
+            onChange={e => {
+              setDescription(e.target.value)
+            }}
+            placeholder='Введите описание задачи'
+          ></textarea>
 
-        <input
-          value={description}
-          onChange={e => {
-            setDescription(e.target.value)
-          }}
-          placeholder='Введите описание задачи'
-        ></input>
+          
+        </div>
 
-        <input
-          value={priority}
-          type='number'
-          min='0'
-          max='10'
-          placeholder='Введите приоритет задачи'
-          onChange={e => {
-            if (Number(e.target.value) < 0) {
-              e.target.value = '0'
-            } else if (Number(e.target.value) > 10) {
-              e.target.value = '10'
-            }
-            setPriority(Number(e.target.value))
-          }}
-        ></input>
-
-        <button
-          onClick={() => {
-            handleAddTask(newTask)
-          }}
-        >
-          Добавить задачу
-        </button>
+        <p className={messageType}>{message}</p>
       </div>
 
-      <p>{message}</p>
+      
 
       {tasks.length === 0 ? (
-        <p style={{ color: 'green' }}>Активных задач нет!!!</p>
+        // setMessage('Активных задач нет')
+        <p className='noTasks'>Активных задач нет!!!</p>
       ) : (
-        tasks.map((task: TaskProps, index: number) => {
+        tasks.sort((a,b) => a.complete - b.complete).map((task: TaskProps, index: number) => {
           return (
             <Task
               key={index}

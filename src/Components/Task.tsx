@@ -21,13 +21,17 @@ const Task = (props: TaskProps) => {
 
   return (
     <div className={task}>
-      <div >
-        <h3 className={name}>{props.name}</h3>
-        <span>Приоритет задачи: {props.priority}</span>
+      <div className='text'>
+        {/* <p><h3 className={name}>{props.name} </h3> Приоритет задачи: {props.priority}</p> */}
+        <div className='nameAndPriority'>
+          <span className={name}>{props.name} </span> 
+          <span className='priority'>Приоритет задачи: {props.priority}</span>
+        </div>
         <p>{props.description}</p>
       </div>
       <button onClick={props.onCompleteTask} className='completed btn'>+</button>
       <button onClick={props.onDeleteTask} className='delete btn'>X</button>
+      {/* Добавить кнопку редактирования задачи*/}
     </div>
   )
 }
