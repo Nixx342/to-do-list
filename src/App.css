@@ -27,24 +27,23 @@
 }
 
 .complete {
-  background-color: darkolivegreen;
-  display: table-cell;
-  vertical-align: middle;
-  justify-content: center;
-  text-align: center;
-  height: 7vh;
-  margin: 0;
+  background: #206812;
+  margin-top: 1vh;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+  font-size: 20px;
+  font-weight: 600;
+  transition: 0.3s linear;
 }
 
 .error {
-  background-color: rgb(187, 68, 13);
-  display: table-cell;
-  vertical-align: middle;
-  justify-content: center;
-  text-align: center;
-  height: 7vh;
-  width: 100%;
-  margin: 0;
+  background: #d31818;
+  margin-top: 1vh;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+  font-size: 20px;
+  font-weight: 600;
+  transition: 0.3s linear;
 }
 
 .addTask {
