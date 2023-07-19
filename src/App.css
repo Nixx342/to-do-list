@@ -17,17 +17,19 @@
 }
 
 .noTasks {
-  background-color: darkolivegreen;
-  display: table-cell;
-  vertical-align: middle;
+  border: 1px solid black;
+  display: flex;
+  margin: 2% auto;
   justify-content: center;
-  text-align: center;
-  height: 7vh;
-  width: 60vw;
+  align-items: center;
+  padding-bottom: 2%;
+  background: darkolivegreen;
+  padding: 3%;
 }
 
 .complete {
-  background: #206812;
+  /* background: #206812; */
+  background: darkolivegreen;
   margin-top: 1vh;
   padding-top: 2vh;
   padding-bottom: 2vh;
